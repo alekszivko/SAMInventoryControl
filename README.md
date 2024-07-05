@@ -1,9 +1,9 @@
 ![](src/main/resources/META-INF/resources/images/logo_samic.svg)
 # samic
 
-A demo web application built as part of our diploma project for our project partner, 
-who needed a web app to list, track, reserve, add, and move its hardware stored at 
-different locations, including customers.
+A prototype web application built as part of our diploma project for our project partner,
+who needed a web application to list, track, reserve, add, and move their hardware stored at various
+locations, including customers.
 
 ## Running the application
 
