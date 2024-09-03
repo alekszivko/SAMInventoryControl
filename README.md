@@ -10,7 +10,7 @@ locations, including customers.
 
 - Docker (Application tests use [testcontainers](https://testcontainers.com/) that start database containers upon 
   testing)
-- Oracle database (eg. gvenzl/oracle-xe) 
+- Oracle database (eg. gvenzl/oracle-xe)
   ```bash 
   docker run -d -p 1521:1521 -e ORACLE_PASSWORD=oracle gvenzl/oracle-xe
   ```
@@ -51,3 +51,41 @@ ready to be deployed. The file can be found in the `target` folder after the bui
 
 Once the JAR file is built, you can run it using
 `java -jar target/samic-1.0-SNAPSHOT.jar`
+
+### Docker Container with production build
+
+To build the Dockerized version of the project, run
+
+```bash
+mvn clean package -Pproduction
+docker build . -t samic:latest
+```
+
+Once the Docker image is correctly built, you can test it locally using
+
+```bash
+docker network create samic
+docker run -d -p 1521:1521 --net=samic -e ORACLE_PASSWORD=oracle --name database --hostname 
+database 
+gvenzl/oracle-xe
+docker run --network=samic --name=samic -d -p 8080:8080 samic:lates
+```
+
+Then access the application on http://localhost:8080
+
+#### Remove all containers and network
+
+```bash
+docker stop samic database
+docker network rm samic
+docker rm samic database
+docker rm gvenzl/oracle-xe samic
+```
+
+
+## Application Credentials
+
+The application makes use of multiple roles that have different privileges. 
+The account below has admin privileges, thus access to all features.
+
+PetHar:admin
