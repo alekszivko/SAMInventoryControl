@@ -1,26 +1,48 @@
 ![](src/main/resources/META-INF/resources/images/logo_samic.svg)
-# samic
+# SAMIC
 
 A prototype web application built as part of our diploma project for our project partner,
 who needed a web application to list, track, reserve, add, and move their hardware stored at various
 locations, including customers.
 
+
+## Requirements
+
+- Docker (Application tests use [testcontainers](https://testcontainers.com/) that start database containers upon 
+  testing)
+- Oracle database (eg. gvenzl/oracle-xe) 
+  ```bash 
+  docker run -d -p 1521:1521 -e ORACLE_PASSWORD=oracle gvenzl/oracle-xe
+  ```
+- Java
+
 ## Running the application
 
-The project is a standard Maven project. To run it from the command line,
-type `mvnw` (Windows), or `./mvnw` (Mac & Linux), then open
-http://localhost:8080 in your browser.
+If started the simple way `./mvnw` (linux/macos) or `mvnw.cmd` (Windows) the application requires
+an already running oracle database (user:system;password:oracle).
 
-In order to run the application a running oracle database is required.
-Unless changed in the in application.properties the application authenticates with user system and password oracle (default password, at least for docker versions of oracle)
+Alternatively run it the following way (recommended):
 
-Alternatively run it the following way (docker required) 
-
+```bash
 mvn exec:java -Dexec.mainClass="com.samic.samic.TestApplication" -Dexec.classpathScope="test"
+```
+which automatically pulls and starts a docker container containing an oracle database.
 
 
 
-## Deploying to Production
+## Build production build
+
+>If the tests are not skipped when building for production, a oracle database like in section 
+> [Running the Application](#Running the application) is required.
+> Use -DskipTests to skip the tests. eg.
+>```bash
+> mvn clean package -Pproduction
+>```
+>or
+>```bash
+> mvn clean package -Pproduction -DskipTests
+>```
+>to save some time
 
 To create a production build, call `mvnw clean package -Pproduction` (Windows),
 or `./mvnw clean package -Pproduction` (Mac & Linux).
@@ -29,19 +51,3 @@ ready to be deployed. The file can be found in the `target` folder after the bui
 
 Once the JAR file is built, you can run it using
 `java -jar target/samic-1.0-SNAPSHOT.jar`
-
-
-## Deploying using Docker
-
-To build the Dockerized version of the project, run
-
-```
-mvn clean package -Pproduction
-docker build . -t samic:latest
-```
-
-Once the Docker image is correctly built, you can test it locally using
-
-```
-docker run -p 8080:8080 samic:latest
-```
