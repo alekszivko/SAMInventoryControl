@@ -1,10 +1,17 @@
 ![](src/main/resources/META-INF/resources/images/logo_samic.svg)
 # SAMIC
 
-A prototype web application built as part of our diploma project for our project partner,
+A [prototype web application](https://samic.azivkovic.dev/
+) built as part of our diploma project for our project partner,
 who needed a web application to list, track, reserve, add, and move their hardware stored at various
 locations, including customers.
 
+# Table of Contents
+- [Requirements](#requirements)
+- [Running the application](#running-the-application)
+- [Build production build](#build-production-build)
+- [Checkout an already running instance](#checkout-an-already-running-instance)
+- [Application credentials](#application-credentials)
 
 ## Requirements
 
@@ -82,6 +89,9 @@ docker rm samic database
 docker rm gvenzl/oracle-xe samic
 ```
 
+## Checkout an already running instance
+
+https://samic.azivkovic.dev/
 
 ## Application Credentials
 
