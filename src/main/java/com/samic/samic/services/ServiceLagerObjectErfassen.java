@@ -48,12 +48,10 @@ public class ServiceLagerObjectErfassen{
         isNotNull(cpe,
                   "cpe in StorageObejectErfassen() | Backend ");
 
-        //        serviceStorageObject.findStor
         storageObject.setStorage(storage);
         var cpe2 = serviceCPE.saveCPEByObject(cpe);
         cpe2.setProducer(producer);
         storageObject.setCpe(cpe2);
-//        serviceStorageObjectHistory.setStorageOBjectHistory(storageObject);
         return serviceStorageObject.saveStorageObject(storageObject);
 
     }
@@ -74,7 +72,6 @@ public class ServiceLagerObjectErfassen{
         var supply1 = serviceSupply.saveSupplyByObject(supply);
         storageObject.setSupply(supply1);
 
-//        serviceStorageObjectHistory.setStorageOBjectHistory(storageObject);
         return serviceStorageObject.saveStorageObject(storageObject);
 
 
@@ -113,21 +110,6 @@ public class ServiceLagerObjectErfassen{
 
         storageObject3.setSfp(sfp3);
 
-/*
-        storageObject.setStorage(storage2);
-
-        var sfp1 = serviceSFP.saveSFPByObject(sfp);
-
-        sfp1.setProducer(producer2);
-
-        storageObject.setSfp(sfp1);*/
-
-//        storageObject.setStorage(storage);
-//        var sfp2 = serviceSFP.saveSFPByObject(sfp);
-//        sfp2.setProducer(producer);
-//        storageObject.setSfp(sfp2);
-
-//        serviceStorageObjectHistory.setStorageOBjectHistory(storageObject);
         return serviceStorageObject.saveStorageObject(storageObject3);
     }
 

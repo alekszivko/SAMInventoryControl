@@ -17,9 +17,7 @@ import java.time.LocalDateTime;
 @Table(name = "storage_object_histories")
 public class StorageObjectHistory extends AbstractIdentityClass<Long>{
 
-    /*
-    relations
-     */
+
     @ManyToOne(fetch = FetchType.EAGER,
                cascade = {CascadeType.MERGE})
     @JoinColumn(name = "fk_storageObject_history",
@@ -42,9 +40,7 @@ public class StorageObjectHistory extends AbstractIdentityClass<Long>{
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Reservation reservation;
 
-    /*
-    attributes
-     */
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -64,10 +60,7 @@ public class StorageObjectHistory extends AbstractIdentityClass<Long>{
                .append(untilDateTime)
                .append("\n")
                .append("storage=")
-               .append(storage.getName())
-//               .append('\'')
-//               .append("reservation=")
-//               .append(reservation)
+        .append(storage.getName())
                .append("\n")
                .append("status=")
                .append(status)

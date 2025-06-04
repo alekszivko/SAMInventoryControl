@@ -10,6 +10,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaAuditing
-//@EnableTransactionManagement
 public class ORCLConfig {
 }

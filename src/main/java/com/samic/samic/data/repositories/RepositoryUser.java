@@ -15,15 +15,6 @@ import java.util.stream.Stream;
 @Repository
 public interface RepositoryUser extends JpaRepository<User, Long>, JpaSpecificationExecutor<User>, ListCrudRepository<User, Long>, ListPagingAndSortingRepository<User, Long>, QueryByExampleExecutor<User>{
 
-    //    User findByProfile(Profile profile);
-
-
-    //    User findByUsername(String username);
-
-
-    //   User findByUsername2(String username);
-    //
-    //    User findByProfileUsername(String username);
 
     User findByProfile_Username(String username);
     User save(User user);

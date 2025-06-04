@@ -41,10 +41,7 @@ public class Supply extends AbstractIdentityClass<Long>{
     public String toString(){
         StringBuilder builder = new StringBuilder();
         builder.append("Supply:\n")
-//               .append("storageObject=")
-//               .append(storageObject)
-//               .append('\'')
-               .append("description='")
+                .append("description='")
                .append(description)
                .append("\n")
                .append("amount=")

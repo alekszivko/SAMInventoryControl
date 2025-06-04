@@ -92,7 +92,6 @@ public class AbfragenView extends VerticalLayout {
             )
         ));
 
-    //Display dummy Object
     statObjectBinder.setBean(dataProviderAbfragen.getStatObject());
   }
 

@@ -96,9 +96,6 @@ public class MeineHardwareView extends TabSheet {
   }
 
   private void initReservationGridData() {
-    //TODO backend needs to make sure that no connection exception is thrown
-    // (cut off stream from repository), or make repo return list
-    //TODO reservation does not contain storageobject
 
     reservationGrid.setItems(
         reservationService.findAllReservationByGivenUser(authenticatedUser.getUser()
@@ -133,7 +130,6 @@ public class MeineHardwareView extends TabSheet {
                 }),
                 UIFactory.btnPrimaryError("Abbrechen", e -> dialog.close()))));
     if (item.getCpe() != null) {
-      //TODO
       cpeForm.setCPEBeans(List.of(item.getObjectTypeName()), item);
       hl.add(cpeForm);
     } else if (item.getSfp() != null) {

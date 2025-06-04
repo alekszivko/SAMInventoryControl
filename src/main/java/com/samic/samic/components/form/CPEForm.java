@@ -45,7 +45,6 @@ public class CPEForm extends FormLayout {
             add(projectEquipmentContainer);
           } else {
             remove(projectEquipmentContainer);
-            //TODO clear binder fields when components are removed from view
           }
         });
 
@@ -80,7 +79,6 @@ public class CPEForm extends FormLayout {
             ConstantsDomain.DEFAULT_LENGTH))
         .bind(StorageObject::getRemark, StorageObject::setRemark);
 
-    //TODO bind connectionNumber and trackingNumber
     binderStorageObject.forField(connectionNumber)
         .withNullRepresentation("")
         /*.withValidator(value -> isProjectEquipment.getValue() && !value.isEmpty(),

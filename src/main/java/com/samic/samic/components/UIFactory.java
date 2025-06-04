@@ -20,7 +20,6 @@ public class UIFactory {
 
   public static VerticalLayout rootComponentContainer(String heading, Component... containers) {
     VerticalLayout container = new VerticalLayout();
-    // class for styling
     container.addClassName("container");
 
     container.add(new H4(heading));
