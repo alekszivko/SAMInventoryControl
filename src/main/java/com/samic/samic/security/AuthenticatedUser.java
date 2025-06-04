@@ -14,39 +14,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @AllArgsConstructor
 public class AuthenticatedUser {
-    //    private final UserRepository userRepository;
-    //    private final UserService           userService;
-    //    public AuthenticatedUser(AuthenticationContext authenticationContext, UserRepository userRepository, UserService userService) {
-    //
-    //    @Autowired
-    //    private final RepositoryUser repositoryUser;
+
 
 
     @Autowired
     private final AuthenticationContext authenticationContext;
-//    @Autowired
-//    private final ServiceUser serviceUser;
     @Autowired
     private final RepositoryUser repositoryUser;
 
 
-    //        this.userRepository        = userRepository;
-//        this.authenticationContext = authenticationContext;
-//        this.userService           = userService;
-//    }
-
-//    @Transactional
-
-//    public Optional<User> get() {
-//        return authenticationContext.getAuthenticatedUser(UserDetails.class)
-//                .map(userDetails -> userRepository.findByUsername(userDetails.getUsername()));
-//    }
-
-//    @Transactional
-//    public Optional<User> getUser(){
-//        return authenticationContext.getAuthenticatedUser(UserDetails.class)
-//                       .map(userDetails -> serviceUser.findUser(userDetails.getUsername()));
-//    }
 
     @Transactional
     public Optional<User> getUser(){

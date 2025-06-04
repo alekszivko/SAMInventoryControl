@@ -151,8 +151,7 @@ public class MainLayout extends AppLayout {
 
       MenuItem userName = userMenu.addItem("");
       Div div = new Div();
-      // div.add(avatar);
-      div.add(user.getProfile().getFirstName()); // habs hier ändern müssen. Kannst aber anpassen.
+      div.add(user.getProfile().getFirstName());
       div.add(new Icon("lumo", "dropdown"));
       div.getElement().getStyle().set("display", "flex");
       div.getElement().getStyle().set("align-items", "center");

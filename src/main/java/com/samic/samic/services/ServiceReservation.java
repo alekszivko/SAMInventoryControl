@@ -38,14 +38,9 @@ public class ServiceReservation{
         if(reservation != null){
             if(reservation.getId() == null){
                 if(reservation.getReservedFrom() != null){
-                    //                    reservation.setReservedAt(DateTimeFactory.now());
                     if(reservation.getCustomer() != null){
                         reservation.setCustomer(reservation.getCustomer());
                     }
-                    //                    if(reservation.getCustomer().connectionNo().isEmpty()){
-                    //                        throw new ReservationException("Connection No is not set!");
-                    //                    }
-                    //                    reservation.setReservedFrom(authenticatedUser.getUser().get());
 
 
                     return repositoryReservation.save(reservation);
@@ -138,18 +133,6 @@ public class ServiceReservation{
         }
     }
 
-    //    @Transactional
-    //    public List<Reservation> findReservationListByUserOptional(User user){
-    //        if(user != null){
-    //            if(repositoryReservation.count()>0L){
-    //                return repositoryReservation.findAllBy_reservedFrom(user);
-    //            }else{
-    //                throw new ReservationException("Could not find Reservation with user: '%s' in DB".formatted(user));
-    //            }
-    //        }else{
-    //            throw new ReservationException("Given name is null!");
-    //        }
-    //    }
     @Transactional
     public Stream<Reservation> findAll(){
         return repositoryReservation.findAll()

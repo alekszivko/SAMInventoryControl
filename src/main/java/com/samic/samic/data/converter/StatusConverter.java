@@ -5,7 +5,6 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.util.Optional;
-//import static javax.swing.text.StyleConstants.Orientation;
 
 
 @Converter(autoApply = true)
@@ -22,21 +21,12 @@ public class StatusConverter implements AttributeConverter<Status, String>{
                            case AVAILABLE -> "A";
 
                        };
-        //        return Optional.ofNullable(status)  // Zweite Möglichkeit, es zu implementi
-        //                       .map(o -> switch(o){
-        //                           case CUSTOMER -> "Cst";
-        //                           case RESERVED -> "Res";
-        //                           case MISSING -> "Miss";
-        //                           case PROJECT -> "prj";
-        //                           case AVAILABLE -> "avl";
-        //
-        //                       }).orElse(null);
     }
 
     @Override
     public Status convertToEntityAttribute(String dbData){
 
-        return Optional.ofNullable(dbData)  // Zweite Möglichkeit, es zu implementi
+        return Optional.ofNullable(dbData)
                        .map(v -> switch(v){
                            case "C" -> Status.CUSTOMER;
                            case "R" -> Status.RESERVED;

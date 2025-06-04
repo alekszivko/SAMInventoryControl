@@ -124,7 +124,6 @@ public class DashboardView extends VerticalLayout implements BeforeEnterObserver
   }
 
   private void initStats() {
-    // STATS - Container
     VerticalLayout statsContainer = UIFactory.rootComponentContainer("Statistiken");
     HorizontalLayout statsComponents = UIFactory.childContainer(JustifyContentMode.START);
 
@@ -344,7 +343,6 @@ public class DashboardView extends VerticalLayout implements BeforeEnterObserver
 
     initReservationData();
 
-    // MY RESERVATION - PUT UI TOGETHER
     add(UIFactory.rootComponentContainer("Meine Reservierungen", reservationGrid));
   }
 
@@ -357,6 +355,5 @@ public class DashboardView extends VerticalLayout implements BeforeEnterObserver
 
   @Override
   public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-    //VaadinSession.getCurrent().setErrorHandler(new SamicErrorHandler());
   }
 }

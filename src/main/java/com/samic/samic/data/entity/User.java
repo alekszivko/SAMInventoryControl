@@ -37,12 +37,8 @@ public class User extends AbstractIdentityClass<Long> {
   @OneToMany(mappedBy = "storedAtUser",
       fetch = FetchType.LAZY,
       cascade = {CascadeType.PERSIST})
-  //        @JoinColumn(name = "fk_storageObject")
   private List<StorageObject> storageObject = new ArrayList<>();
 
-  //    @OneToOne(targetEntity = StorageObject.class,fetch = FetchType.LAZY)
-  //    @JoinColumn(name = "storage_object" )
-  //    private StorageObject storageObject;
 
 
   @OneToMany(mappedBy = "reservedFrom",
@@ -50,10 +46,6 @@ public class User extends AbstractIdentityClass<Long> {
       cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
   private List<Reservation> reservation = new ArrayList<>();
 
-  //    @JsonIgnore
-  /* @NotBlank*/
-  //    @Column(name = "password")
-  //    private String password;
 
   /*
   attributes
@@ -84,28 +76,14 @@ public class User extends AbstractIdentityClass<Long> {
   @Column(name = "hashed_password")
   private String hashedPassword;
 
-  //    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-  //    private ApplicationUser applicationUser;
-
-  //    @OneToOne
-  //    @JoinColumn(foreignKey = @ForeignKey(name = "FK_User_2_Profile"))
 
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();
     builder.append("User:\n")
-//               .append("profile=")
-//               .append(profile.getLastName())
         .append("\n")
         .append("role=")
         .append(role.getLongVersion())
-//               .append('\'')
-//               .append("createdAt=")
-//               .append(createdAt)
-//               .append('\'')
-//               .append("lastLogin=")
-//               .append(lastLogin)
-//               .append('\'')
         .append("activated=")
         .append(activated)
         .append("\n")
