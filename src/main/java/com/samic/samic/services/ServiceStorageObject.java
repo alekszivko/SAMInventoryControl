@@ -81,7 +81,6 @@ public class ServiceStorageObject {
     }
 
     if (storageObject != null) {
-      //            System.out.println("------------- 1 " + storageObject.getReservation().getReservedFrom());
       log.warn(
           "saveStorageObject() | ######################## USER1 ########################, {}: ",
           storageObject.getStoredAtUser());
@@ -90,7 +89,6 @@ public class ServiceStorageObject {
           storageObject,
           storageObject.getStoredAtUser());
       if (storageObject.getId() != null) {
-        //                System.out.println("------------- 2 " + storageObject.getReservation().getReservedFrom());
         log.warn(
             "saveStorageObject() | ######################## USER2 ########################, {}: ",
             storageObject.getStoredAtUser());
@@ -99,7 +97,6 @@ public class ServiceStorageObject {
             storageObject.getId(),
             storageObject);
         if (doesObjectExistById(storageObject.getId())) {
-          //                    System.out.println("------------- 3 " + storageObject.getReservation().getReservedFrom());
           log.warn(
               "saveStorageObject() | ######################## USER3 ########################, {}: ",
               storageObject.getStoredAtUser());
@@ -108,7 +105,6 @@ public class ServiceStorageObject {
               storageObject.getId(),
               storageObject);
           StorageObject fetchedStorageObject = findStorageObjectById(storageObject.getId());
-          //                    System.out.println("------------- 4 " + fetchedStorageObject.getReservation().getReservedFrom());
           log.warn(
               "saveStorageObject() | ######################## USER4 ########################, {}: ",
               storageObject.getStoredAtUser());
@@ -117,7 +113,6 @@ public class ServiceStorageObject {
               storageObject.getId(),
               fetchedStorageObject);
           if (fetchedStorageObject != null) {
-            //                        System.out.println("------------- 5 " + fetchedStorageObject.getReservation().getReservedFrom());
             log.warn(
                 "saveStorageObject() | ######################## USER5 ########################i, {}: ",
                 storageObject.getStoredAtUser());
@@ -127,7 +122,6 @@ public class ServiceStorageObject {
                 fetchedStorageObject);
             if (fetchedStorageObject.getId()
                 .equals(storageObject.getId())) {
-              //                            System.out.println("------------- 6 " + fetchedStorageObject.getReservation().getReservedFrom());
               log.warn(
                   "saveStorageObject() | ######################## USER6 ########################, {}: ",
                   storageObject.getStoredAtUser());
@@ -170,7 +164,7 @@ public class ServiceStorageObject {
         }
       } else {
         log.debug("saveStorageObject() | StorageObject id is null, Saving StorageObject: {}",
-            storageObject); //TODO T3600
+            storageObject);
         serviceStorageObjectHistory.setStorageOBjectHistory(storageObject);
         StorageObject saved = repositoryStorageObject.save(storageObject);
         return saved;
@@ -520,7 +514,6 @@ public class ServiceStorageObject {
         VaadinSpringDataHelpers.toSpringDataSort(query));
   }
 
-  //Map mit den Geräten und der Anzahl der Geräte mit stream und map hardocded 2
   public Map<String, Long> findAmountOfObjectType1() {
 
     Map<String, Long> mapList = new HashMap<>();
@@ -640,7 +633,6 @@ public class ServiceStorageObject {
 
   }
 
-  //Map mit den Geräten und der Anzahl der Geräte mit stream und map hardcoded 2
   public Map<String, Long> findAmountOfObjectType2() {
     Map<String, Long> maxValues = new HashMap<>();
 
@@ -737,7 +729,6 @@ public class ServiceStorageObject {
     return maxValues;
   }
 
-  //Einzelwert für die Anzahl der Geräte holen
   public Long findAmountOfObjectType2(String objectType) {
     return repositoryStorageObject.findAll()
         .stream()
@@ -754,9 +745,6 @@ public class ServiceStorageObject {
     //                                      .count();
   }
 
-  //    public Stream<StorageObject> findStorageObjectByUserId(Long id, PageRequest query){
-  //        return repositoryStorageObject.findAllByStoredAtUser_Id(id, query).stream();
-  //    }
 
   public Stream<Reservation> findStorageObjectByUserId(Long id,
       PageRequest request) {
@@ -778,12 +766,9 @@ public class ServiceStorageObject {
           storageObjectByReservationId.setRemark(reservationById.getReservedDescription());
           storageObjectByReservationId.setStoredAtUser(authenticatedUser.getUser().get());
 
-          //                    reservationById.setReservedFrom(null);
-          //                    storageObjectByReservationId.setReservation(null);
           reservationById.setReservedFrom(null);
           storageObjectByReservationId.setReservation(null);
           repositoryReservation.deleteById(Objects.requireNonNull(reservationById.getId()));
-          //                    serviceReservation.deleteByObject(reservationById);
 
           serviceStorageObjectHistory.setStorageOBjectHistory(storageObjectByReservationId);
           saveStorageObject(storageObjectByReservationId);

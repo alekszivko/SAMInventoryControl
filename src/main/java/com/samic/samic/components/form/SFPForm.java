@@ -77,12 +77,8 @@ public class SFPForm extends FormLayout {
         .bind(so -> so.getSfp().getNicSpeed(),
             (so, value) -> so.getSfp().setNicSpeed(value));
 
-    //TODO bind connectionNumber and trackingNumber
     binderStorageObject.forField(connectionNumber)
         .withNullRepresentation("")
-        /*.withValidator(value -> isProjectEquipment.getValue() && !value.isEmpty(),
-            "Verbindungsnummer darf nicht leer sein")
-        */
         .bind(StorageObject::getVerbindungsnummer, StorageObject::setVerbindungsnummer);
 
     binderStorageObject.forField(trackingNumber)

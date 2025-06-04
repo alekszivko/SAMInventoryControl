@@ -60,40 +60,6 @@ public class Reservation extends AbstractIdentityClass<Long>{
     private LocalDateTime lastModified;
 
 
-//    public void setReservedFrom(User reservedFrom){
-//        if(reservedFrom != null){
-//            if(this.getReservedFrom() == null){
-//                this.reservedFrom = reservedFrom;
-//            }else{
-//                throw new SamicException("Reservation has already a User!");
-//            }
-//        }else{
-//            throw new SamicException("Given User is null!");
-//        }
-//    }
-//
-//    public void setStorageObject(StorageObject storageObject){
-//        if(storageObject != null){
-//            if(this.getStorageObject() == null){
-//                this.storageObject = storageObject;
-//            }else{
-//                throw new SamicException("Reservation has already set!");
-//            }
-//        }else{
-//            throw new SamicException("Given StorageObject is null!");
-//        }
-//    }
-//
-//
-//    public void setReservedAt(LocalDateTime reservedAt){
-//        if(reservedAt != null){
-//            if(this.getReservedAt() != null){
-//                this.reservedAt = reservedAt;
-//            }else{
-//                throw new SamicException("Reservation Date has been already set!");
-//            }
-//        }
-//    }
 
     @Override
     public int hashCode() {
@@ -108,25 +74,11 @@ public class Reservation extends AbstractIdentityClass<Long>{
     public String toString(){
         StringBuilder builder = new StringBuilder();
         builder.append("Reservation:\n")
-               //                .append("storageObject=")
-               //                .append(storageObject)
-               //                .append('\'')
-               //               .append("reservedFrom=")
-               //               .append(reservedFrom)
-               //               .append('\'')
-               //               .append("customer=")
-               //               .append(customer)
-               //               .append('\'')
-               //               .append("reservedAt=")
-               //               .append(reservedAt)
-               //               .append('\'')
                .append("reservedDescription='")
                .append(reservedDescription)
                .append("\n")
                .append("completed=")
                .append((completed != null)?builder.append(completed):builder.append("not set"));
-        //               .append('\'')
-        //               .append("lastModified=").append(lastModified);
         return builder.toString();
     }
 }

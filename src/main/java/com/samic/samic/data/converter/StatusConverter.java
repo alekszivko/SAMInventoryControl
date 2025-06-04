@@ -22,15 +22,6 @@ public class StatusConverter implements AttributeConverter<Status, String>{
                            case AVAILABLE -> "A";
 
                        };
-        //        return Optional.ofNullable(status)  // Zweite Möglichkeit, es zu implementi
-        //                       .map(o -> switch(o){
-        //                           case CUSTOMER -> "Cst";
-        //                           case RESERVED -> "Res";
-        //                           case MISSING -> "Miss";
-        //                           case PROJECT -> "prj";
-        //                           case AVAILABLE -> "avl";
-        //
-        //                       }).orElse(null);
     }
 
     @Override

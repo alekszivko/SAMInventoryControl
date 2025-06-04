@@ -34,7 +34,6 @@ public interface RepositoryStorageObject extends JpaRepository<StorageObject, Lo
     Stream<StorageObject> findStorageObjectsBySfp_Id(Long id);
 
 
-    //    Stream<StorageObject> findStorageObjectByReserved(Reservation.);
 
     Page<StorageObject> findStorageObjectsByStorage_Id(Long id, PageRequest request);
 
@@ -48,9 +47,6 @@ public interface RepositoryStorageObject extends JpaRepository<StorageObject, Lo
 
     Stream<StorageObject> findStorageObjectByCpe_Id(Long id);
 
-    //    Optional<StorageObject> findStorageObjectByVerbindungsnummer(String verbinNr);
-
-    //    List<StorageObject> findAllByObjectTypeNameLikeIgnoreCase(String keyword, String keyword1, Pageable pageable);
 
     List<StorageObject> findAllByObjectTypeName_Name(String filterString, Pageable pageable);
 
@@ -58,12 +54,6 @@ public interface RepositoryStorageObject extends JpaRepository<StorageObject, Lo
 
     StorageObject findStorageObjectsByReservationId(Long id);
 
-    //    @Query("SELECT emp "+"FROM StorageObject emp "+" inner JOIN ObjectType com ON emp.objectTypeName.id = com.id "+"WHERE ( lower(emp.objectTypeName.name) LIKE lower(:keyword) OR lower(emp.objectTypeName.name) LIKE lower(:keyword) )")
-    //    List<StorageObject> searchUnemployedWithOr(String keyword, Pageable pageable);
-    //
-    //    @Query("SELECT emp "+"FROM StorageObject emp "+"   inner JOIN ObjectType com ON emp.objectTypeName.id = com.id "+"WHERE  emp.objectTypeName IS NULL "+"  AND ( lower(emp.objectTypeName.name) LIKE lower(:keyword) OR lower(emp
-    //    .objectTypeName) LIKE lower(:keyword) )")
-    //    List<StorageObject> searchUnemployedWithOr2(String keyword, Pageable pageable);
 
     @Query(value = "select s from StorageObject s join fetch s.objectTypeName where lower(s.objectTypeName.name) LIKE lower(:name)" +
                            " AND s.reservation = null AND s.storage != null AND lower(s.storage.name) != lower('Kunde' ) AND s.storage.id = :id"/* +
@@ -73,9 +63,4 @@ public interface RepositoryStorageObject extends JpaRepository<StorageObject, Lo
             @Param("name")
             String filterString, Pageable pageable, @Param("id") Optional<Long> storageID);
 
-    //    Page<StorageObject> findStorageObjectByStoredAtUser_Id(Long id, PageRequest request);
-
-    //@Query(value = "select s from StorageObject s join fetch s.reservation where s.reservation.reservedFrom = :userid
-    //    Stream<StorageObject> findAllByReservation_ReservedFrom_Id(@Param("userid")Long id, Pageable pageable);
-    //    Page<StorageObject> findAllByObjectTypeNameLikeIgnoreCase(String likeFiler);
 }

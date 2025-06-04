@@ -16,8 +16,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Builder
 @Embeddable
-public class Profile { //extend hier entferenen weil eine entity nicht
-    // gleichzeitig ein embaddable sein kann!!!
+public class Profile {
 
     /*
      relations

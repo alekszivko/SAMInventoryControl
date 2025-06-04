@@ -94,11 +94,8 @@ public class AppSettings extends VerticalLayout {
 
   private void initNotificationLimitsGrid() {
     notificationLimitsGrid.addColumn(ObjectType::getName);
-    //TODO add min field to ObjectType
-    //notificationLimitsGrid.addColumn(item -> "Min " + item.getMinAmount().toString());
     notificationLimitsGrid.getStyle().setBorder("0px");
     notificationLimitsGrid.setMaxHeight("200px");
-    //notificationLimitsGrid.setWidthFull();
     notificationLimitsGrid.addThemeVariants(GridVariant.LUMO_NO_ROW_BORDERS);
     notificationLimitsGrid.addComponentColumn(item -> new Span(
         UIFactory.btnIconWithTooltip(LineAwesomeIcon.EDIT.create(), "Bearbeiten",

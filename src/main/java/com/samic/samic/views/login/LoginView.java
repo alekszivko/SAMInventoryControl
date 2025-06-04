@@ -43,10 +43,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     loginOverlay.setForgotPasswordButtonVisible(HAS_FORGOT_PASSWORD);
     loginOverlay.setOpened(true);
     add(loginOverlay);
-    // Prevent the example from stealing focus when browsing the
-    // documentation
     loginOverlay.getElement().setAttribute("no-autofocus", "");
-    // Login does not work without this one
     loginOverlay.setAction(
         RouteUtil.getRoutePath(VaadinService.getCurrent().getContext(), getClass()));
   }
@@ -55,8 +52,6 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
   public void beforeEnter(BeforeEnterEvent event) {
 
     if (authenticatedUser.getUser().isPresent()) {
-      // Already logged in
-      // setOpened(false);
       event.forwardTo("");
     }
 

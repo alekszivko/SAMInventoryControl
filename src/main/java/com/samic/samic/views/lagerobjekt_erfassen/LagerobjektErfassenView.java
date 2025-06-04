@@ -160,7 +160,6 @@ public class LagerobjektErfassenView extends VerticalLayout {
   }
 
   private void onCancel() {
-    //storageObjectService.deleteStorageObjectById(storageObject.getId());
     UI.getCurrent().getPage().reload();
   }
 

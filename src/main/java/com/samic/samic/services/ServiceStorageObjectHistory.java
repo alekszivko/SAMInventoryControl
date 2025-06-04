@@ -52,7 +52,6 @@ public class ServiceStorageObjectHistory{
     }
 
 
-    //t
     @Transactional
     public StorageObjectHistory findStorageObjectHistoryByID(Long id){
         if(id != null){
@@ -68,7 +67,6 @@ public class ServiceStorageObjectHistory{
         }
     }
 
-    //t
     @Transactional
     public Optional<StorageObjectHistory> findStorageObjectHistoryByIDOptional(Long id){
         if(id != null){
@@ -83,7 +81,6 @@ public class ServiceStorageObjectHistory{
         }
     }
 
-    //t
     public void deleteStorageObjectHistoryById(Long id){
         if(id != null){
             if(!repositoryStorageObjectHistory.findAll()
@@ -97,7 +94,6 @@ public class ServiceStorageObjectHistory{
         }
     }
 
-    //t
     public void deleteByObject(StorageObjectHistory storageObjectHistory){
         if(storageObjectHistory != null){
             if(!repositoryStorageObjectHistory.findAll()
@@ -111,7 +107,6 @@ public class ServiceStorageObjectHistory{
         }
     }
 
-    //t
     public boolean doesObjectExistById(Long id){
         if(id != null){
             return repositoryStorageObjectHistory.existsById(id);
@@ -121,7 +116,6 @@ public class ServiceStorageObjectHistory{
     }
 
 
-    //t
     @Transactional
     public Optional<StorageObjectHistory> findStorageObjectHistoryByStatusOptional(Status status){
         if(status != null){

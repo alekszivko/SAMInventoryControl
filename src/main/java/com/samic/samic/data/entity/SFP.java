@@ -59,9 +59,6 @@ public class SFP extends AbstractIdentityClass<Long>{
     public String toString(){
         StringBuilder builder = new StringBuilder();
         builder.append("SFP:\n")
-//               .append("producer=")
-//               .append(producer)
-//               .append('\'')
                .append("wavelength='")
                .append(wavelength)
                .append("\n")
@@ -70,12 +67,6 @@ public class SFP extends AbstractIdentityClass<Long>{
                .append("\n")
                .append("serialnumber='")
                .append(serialnumber);
-//               .append('\'')
-//               .append("type=")
-//               .append(type)
-//               .append('\'')
-//               .append("sfpType=")
-//               .append(sfpType);
         return builder.toString();
     }
 

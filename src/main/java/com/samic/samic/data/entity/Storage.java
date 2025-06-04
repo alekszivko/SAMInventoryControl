@@ -42,27 +42,11 @@ public class Storage extends AbstractIdentityClass<Long>{
     @NotBlank
     private String name;
 
-    //
-    //    public Storage addAddress(Address storageAddress){
-    //        return this;
-    //    }
-    //
-    //    public Storage clearAddres(){
-    //        address = null;
-    //        return this;
-    //    }
-    //
-    //    public void setAddress(Address address){
-    //        this.address = address;
-    //    }
 
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
         builder.append("Storage:\n")
-//               .append("address=")
-//               .append(address)
-//               .append('\'')
                .append("name='")
                .append(name);
         return builder.toString();
