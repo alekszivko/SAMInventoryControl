@@ -58,7 +58,6 @@ public class ServiceStorage{
     }
 
 
-    //t
     @Transactional
     public Storage findStorageByID(Long id){
         if(id != null){
@@ -72,7 +71,6 @@ public class ServiceStorage{
         }
     }
 
-    //t
     @Transactional
     public Optional<Storage> findStorageByIDOptional(Long id){
         if(id != null){
@@ -86,7 +84,6 @@ public class ServiceStorage{
         }
     }
 
-    //t
     @Transactional
     public void deleteStoragetById(Long id){
         if(id != null){
@@ -100,7 +97,6 @@ public class ServiceStorage{
         }
     }
 
-    //t
     @Transactional
     public void deleteByObject(Storage storage){
         if(storage != null){
@@ -114,7 +110,6 @@ public class ServiceStorage{
         }
     }
 
-    //t
     @Transactional
     public boolean doesObjectExistById(Long id){
         if(id != null){
@@ -124,15 +119,6 @@ public class ServiceStorage{
         }
     }
 
-    //    public Storage findStorageByName(String name){
-    //        if(!Guard.isNullBlankOrEmpty(name)){
-    //            return repositoryStorage.findStorageByName(name);
-    //        }else{
-    //            throw new SamicException("Given name is null!");
-    //        }
-    //    }
-
-    //t
     @Transactional
     public Optional<Storage> findStorageByNameOptional(String name){
         if(name != null){

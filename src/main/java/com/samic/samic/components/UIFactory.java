@@ -18,17 +18,11 @@ import java.util.HashMap;
 public class UIFactory {
 
 
-  ///////////---------------------Layout/Containers≈---------------------///////////
   public static VerticalLayout rootComponentContainer(String heading, Component... containers) {
     VerticalLayout container = new VerticalLayout();
 
-    // add class-name for css
     container.addClassName("container");
-
-    // add heading
     container.add(new H4(heading));
-
-    // add layouts/containers that contain multiple components
     container.add(containers);
     return container;
   }
@@ -42,16 +36,10 @@ public class UIFactory {
 
   public static HorizontalLayout childContainer(
       FlexComponent.JustifyContentMode justifyContentMode, Component... components) {
-    // Create container
     HorizontalLayout childContainer = new HorizontalLayout();
-
-    // Style
     childContainer.setJustifyContentMode(justifyContentMode);
-    // make it wrap content
     childContainer.getStyle().set("flex-wrap", "wrap");
     childContainer.setWidthFull();
-
-    // Add optional components passed to method
     childContainer.add(components);
 
     return childContainer;
@@ -64,7 +52,6 @@ public class UIFactory {
     return childContainer;
   }
 
-  ///////////---------------------BUTTONS≈---------------------///////////
   public static Button btnPrimary(
       String text, ComponentEventListener<ClickEvent<Button>> listener) {
     Button btnPrimary = new Button(text);
@@ -135,7 +122,6 @@ public class UIFactory {
     return notification;
   }
 
-  ///////////---------------------GridUtils≈---------------------///////////
   public static VerticalLayout LazyComponent(SerializableSupplier<? extends Component> component) {
     VerticalLayout container = UIFactory.rootComponentContainer("");
     container.setHeightFull();

@@ -84,16 +84,6 @@ public class AbstractIdentityClass<Long extends Serializable> implements Persist
         return null == this.getId() ? false : this.getId().equals(that.getId());
     }
 
-//    @Override
-//    public int hashCode() {
-//
-//        int hashCode = 17;
-//
-////        hashCode += null == getId() ? 0 : getId().hashCode() * 31;
-//        return id == null ? Objects.hash(43): Objects.hash(id);
-//
-////        return hashCode;
-//    }
 
     @Override
     public int hashCode() {

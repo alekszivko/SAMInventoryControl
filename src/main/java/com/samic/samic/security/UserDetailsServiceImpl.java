@@ -21,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-  //    @Autowired
-//    private final ServiceUser serviceUser;
   @Autowired
   private final RepositoryUser repositoryUser;
 
@@ -36,17 +34,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + userRole));
   }
 
-//    private static List<GrantedAuthority> getAuthorities(User user) {
-//        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-//                .collect(Collectors.toList());
-//
-//    }
 
   @Override
   @Transactional
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user1 = serviceUser.findByUsername(username);
-//        User user = serviceUser.findUser(username);
     User user1 = repositoryUser.findByProfile_Username(username);
 
     if (user1 == null) {

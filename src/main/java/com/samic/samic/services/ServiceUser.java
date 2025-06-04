@@ -29,8 +29,6 @@ public class ServiceUser{
     @Autowired
     ServiceStorageObject serviceStorageObject;
     //    @Autowired
-    //    AuthenticatedUser authenticatedUser;
-    //
     public User findUser(String username){
         if(username != null){
             return repositoryUser.findByProfile_Username(username);
@@ -73,7 +71,6 @@ public class ServiceUser{
         }
         return repositoryUser.count();
     }
-    ////////////////////////////////////////////////////
 
     public User findUserByID(Long id){
         if(id != null){

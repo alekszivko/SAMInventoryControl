@@ -10,19 +10,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaAuditing
-//@EnableTransactionManagement
 public class ORCLConfig{
-
-    //    @Bean
-    //    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-    //           LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-    //           return (LocalContainerEntityManagerFactoryBean) emf.getNativeEntityManagerFactory();
-    //    }
-    //
-    //    @Bean
-    //    public PlatformTransactionManager transactionManager() {
-    //        JpaTransactionManager transactionManager = new JpaTransactionManager();
-    //        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-    //        return transactionManager;
-    //    }
 }

@@ -5,7 +5,7 @@ import com.samic.samic.data.foundation.DateTimeFactory;
 
 public class Fixtures{
 
-    //////////////////////////////////////////////////// Producer
+
     public static Producer giveProducer1(){
         return Producer.builder()
                        .shortname("Cisco")
@@ -41,7 +41,6 @@ public class Fixtures{
                        .build();
     }
 
-    //////////////////////////////////////////////////// SFP
     public static SFP giveSFP1(){
         return SFP.builder()
                   .wavelength("111nm")
@@ -92,7 +91,6 @@ public class Fixtures{
                   .build();
     }
 
-    //////////////////////////////////////////////////// CPE
 
     public static CPE giveCPE1(){
         return CPE.builder()
@@ -140,7 +138,6 @@ public class Fixtures{
                   .build();
     }
 
-    //////////////////////////////////////////////////// User
 
     public static User giveUser1(){
 
@@ -205,7 +202,6 @@ public class Fixtures{
                    .build();
     }
 
-    //////////////////////////////////////////////////// Profile
 
     private static Profile giveProfile1(){
         return Profile.builder()
@@ -253,7 +249,6 @@ public class Fixtures{
                 .build();
     }
 
-    //////////////////////////////////////////////////// Storage
 
     public static Storage giveStorage1(){
         return Storage.builder()
@@ -320,7 +315,6 @@ public class Fixtures{
                 .build();
     }
 
-    //////////////////////////////////////////////////// Supply
 
 
     public static Supply giveSupply1(){
@@ -358,12 +352,10 @@ public class Fixtures{
                      .build();
     }
 
-    //////////////////////////////////////////////////// StorageObject
     public static StorageObject giveStorageObject1(){
         return StorageObject.builder()
                             .remark("remark1")
                             .objectTypeName(giveObjectType1())
-//                            .verbindungsnummer("1234")
                             .projectDevice(false)
                             .status(Status.AVAILABLE)
                             .build();
@@ -374,7 +366,6 @@ public class Fixtures{
         return StorageObject.builder()
                             .remark("remark1")
                             .objectTypeName(giveObjectType2())
-//                            .verbindungsnummer("1234")
 
                             .projectDevice(false)
                             .status(Status.AVAILABLE)
@@ -386,7 +377,6 @@ public class Fixtures{
         return StorageObject.builder()
                             .remark("remark1")
                             .objectTypeName(giveObjectType3())
-//                            .verbindungsnummer("1234")
 
                             .projectDevice(false)
                             .status(Status.AVAILABLE)
@@ -398,7 +388,6 @@ public class Fixtures{
         return StorageObject.builder()
                             .remark("remark1")
                             .objectTypeName(giveObjectType4())
-//                            .verbindungsnummer("1234")
 
                             .projectDevice(false)
                             .status(Status.AVAILABLE)
@@ -410,7 +399,6 @@ public class Fixtures{
         return StorageObject.builder()
                             .remark("remark1")
                             .objectTypeName(giveObjectType5())
-//                            .verbindungsnummer("1234")
 
                             .projectDevice(false)
                             .status(Status.AVAILABLE)
@@ -418,7 +406,6 @@ public class Fixtures{
 
     }
 
-    //////////////////////////////////////////////////// Reservation
 
     public static Reservation giveReservation1(){
         return Reservation.builder()
@@ -453,7 +440,6 @@ public class Fixtures{
                           .build();
     }
 
-    //////////////////////////////////////////////////// ObjectType
 
     public static ObjectType giveObjectType1(){
         return ObjectType.builder()

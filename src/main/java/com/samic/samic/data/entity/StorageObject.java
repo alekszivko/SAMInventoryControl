@@ -28,11 +28,10 @@ public class StorageObject extends AbstractIdentityClass<Long> {
 
   @OneToOne(fetch = FetchType.EAGER,
       cascade = CascadeType.PERSIST,
-      orphanRemoval = false) //Shared Primary Key
+      orphanRemoval = false)
   @JoinColumn(name = "fk_reservation"
       /*, referencedColumnName = "id"*/,
       foreignKey = @ForeignKey(name = "fk_reservation_2_storageObject"))
-  //foreignKey should be named only reservation
   private Reservation reservation;
 
   @ManyToOne(fetch = FetchType.EAGER,
@@ -69,7 +68,6 @@ public class StorageObject extends AbstractIdentityClass<Long> {
       foreignKey = @ForeignKey(name = "fk_User_2_storageObject"))
   private User storedAtUser;
 
-  //Einseitige Beziehung
   @ManyToOne(fetch = FetchType.EAGER,
       cascade = {CascadeType.MERGE})
   @JoinColumn(name = "fk_storage",
@@ -81,17 +79,13 @@ public class StorageObject extends AbstractIdentityClass<Long> {
    */
   @Column(name = "remark",
       length = ConstantsDomain.DEFAULT_LENGTH)
-  //    @NotBlank
   private String remark;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "status"
-      /*, length = 1*/
-      /*,columnDefinition = "CHAR(1)CHECK (Status IN ('C','R','M','P','A'))"*/)
+      /*, length = 1*/)
   private Status status;
 
-  //    @Column(name = "object_name", length = ConstantsDomain.DEFAULT_LENGTH)
-  //    private @NotBlank String name;
 
   @Column(name = "project_device")
   private Boolean projectDevice;
@@ -102,47 +96,6 @@ public class StorageObject extends AbstractIdentityClass<Long> {
   @Column
   private String trackingNo;
 
-  //    public void setReservation(Reservation reservation){
-  //        if(reservation != null){
-  //            if(this.getReservation() == null){
-  //                this.reservation = reservation;
-  //            }else{
-  //                throw new SamicException("Reservation has already been set!");
-  //            }
-  //        }else{
-  //            throw new SamicException("Given Reservation is null!");
-  //        }
-  //    }
-  //
-  //    public void setStorage(Storage storage){
-  //        if(storage != null){
-  //            this.storage = storage;
-  //        }
-  //    }
-  //
-  //    public void setCpe(CPE cpe){
-  //        if(cpe != null){
-  //            if(this.getSfp() == null){
-  //                this.cpe = cpe;
-  //            }
-  //        }
-  //    }
-  //
-  //    public void setSfp(SFP sfp){
-  //        if(sfp != null){
-  //            if(this.getCpe() == null){
-  //                this.sfp = sfp;
-  //            }
-  //        }
-  //    }
-  //
-  //    public void setSupply(Supply supply){
-  //        if(supply != null){
-  //            if(this.supply == null){
-  //                this.supply = supply;
-  //            }
-  //        }
-  //    }
 
 
   @Override

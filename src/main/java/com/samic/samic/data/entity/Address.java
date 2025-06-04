@@ -44,33 +44,4 @@ public class Address{
     private String city;
 
 
-    //    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //    @JoinColumn(foreignKey = @ForeignKey(name = "fk_address_to_storage"))
-    //    private Storage storage;
-
-    //
-    //    public Integer getHouseNo(){
-    //        return houseNo;
-    //    }
-    //
-    //    public void setHouseNo(Integer houseNo){
-    //
-    //            if(houseNo > 0 && houseNo < 1000){
-    //                this.houseNo = houseNo;
-    //            }else{
-    //                throw new DomainException(houseNo < 0 ? "HouseNo is less than 0": "HouseNo is bigger than 1000");
-    //            }
-    //
-    //
-    //    }
-    //
-    //    public Integer getDoorNo(){
-    //        return doorNo;
-    //    }
-    //
-    //    public void setDoorNo(Integer doorNo){
-    //        if(doorNo > 0 && doorNo < 1000){
-    //            this.doorNo = doorNo;
-    //        }
-    //    }
 }
