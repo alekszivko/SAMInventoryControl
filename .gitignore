@@ -2,6 +2,14 @@
 .idea/
 .vscode/
 
+# Runtime log files
+*.log
+*.log.*.gz
+*.log.*.tmp
+"*.log"
+"*.log".*.gz
+"*.log".*.tmp
+
 
 .DS_Store
 
