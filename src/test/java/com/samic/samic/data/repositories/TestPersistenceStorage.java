@@ -1,27 +1,36 @@
 package com.samic.samic.data.repositories;
+import com.samic.samic.BaseIntegrationTest;
 
 import com.samic.samic.data.entity.Storage;
 import com.samic.samic.data.fixture.Fixtures;
 import com.samic.samic.data.foundation.Guard;
 import com.samic.samic.exceptions.SamicException;
 import com.samic.samic.services.ServiceStorage;
+import com.samic.samic.services.ServiceStorageObject;
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-@DataJpaTest
 @Log4j2
-public class TestPersistenceStorage{
+public class TestPersistenceStorage extends BaseIntegrationTest {
 
     @Autowired
-    private ServiceStorage    serviceStorage;
+    private ServiceStorage       serviceStorage;
     @Autowired
-    private RepositoryStorage repositoryStorage;
+    private RepositoryStorage    repositoryStorage;
+    @Autowired
+    private ServiceStorageObject serviceStorageObject;
+
+    @BeforeEach
+    void setUp() {
+        serviceStorageObject.deleteAll();
+        repositoryStorage.deleteAll();
+    }
 
     //given
     @Test
@@ -175,8 +184,8 @@ public class TestPersistenceStorage{
     @Test
     void ensure_save_and_find_all_through_count(){
         //given
-        //        counting objects listed in DB
-        Long stgSize1 = serviceStorage.findAll().count();
+        //        counting objects listed in DB (DB is empty after @BeforeEach)
+        Long stgSize1 = 0L;
         log.debug("stgSize1: {}", stgSize1);
         Storage storage1 = Fixtures.giveStorage1();
         Storage storage2 = Fixtures.giveStorage2();

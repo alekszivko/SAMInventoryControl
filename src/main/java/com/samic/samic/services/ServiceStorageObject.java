@@ -297,42 +297,23 @@ public class ServiceStorageObject {
   @Transactional
   public List<StorageObject> findNotReservedStorageObjects() {
     List<StorageObject> freeStorageObjects = new ArrayList<>();
-    if (!repositoryStorageObject.findAll()
-        .isEmpty()) {
-      List<StorageObject> storageObjectList = repositoryStorageObject.findAll();
-      Iterator<StorageObject> iter = storageObjectList.iterator();
-      while (iter.hasNext()) {
-        StorageObject TempstorageObject = iter.next();
-        if (TempstorageObject.getReservation() == null) {
-          freeStorageObjects.add(TempstorageObject);
-        }
+    List<StorageObject> storageObjectList = repositoryStorageObject.findAll();
+    for (StorageObject TempstorageObject : storageObjectList) {
+      if (TempstorageObject.getReservation() == null) {
+        freeStorageObjects.add(TempstorageObject);
       }
-    } else {
-      throw new StorageObjectException("StorageObject list is empty!");
-    }
-    if (freeStorageObjects.isEmpty()) {
-      throw new StorageObjectException("There are no Free StorageObjects in DB!");
     }
     return freeStorageObjects;
   }
 
   @Transactional
   public List<StorageObject> findReservedStorageObjects() {
-    List<StorageObject> reservedStorageObjects = repositoryStorageObject.findAll();
-    //        List<StorageObject>     storageObjectList = repositoryStorageObject.findAll();
-    if (!reservedStorageObjects.isEmpty()) {
-      Iterator<StorageObject> iter = reservedStorageObjects.iterator();
-      while (iter.hasNext()) {
-        StorageObject TempstorageObject = iter.next();
-        if (TempstorageObject.getReservation() != null) {
-          reservedStorageObjects.add(TempstorageObject);
-        }
+    List<StorageObject> allObjects = repositoryStorageObject.findAll();
+    List<StorageObject> reservedStorageObjects = new ArrayList<>();
+    for (StorageObject obj : allObjects) {
+      if (obj.getReservation() != null) {
+        reservedStorageObjects.add(obj);
       }
-    } else {
-      throw new StorageObjectException("StorageObject list is empty!");
-    }
-    if (reservedStorageObjects.isEmpty()) {
-      throw new StorageObjectException("There are no Free StorageObjects in DB!");
     }
     return reservedStorageObjects;
   }

@@ -1,16 +1,15 @@
 package com.samic.samic.data.repositories;
+import com.samic.samic.BaseIntegrationTest;
 
 import com.samic.samic.data.entity.User;
 import com.samic.samic.data.fixture.Fixtures;
 import com.samic.samic.services.ServiceUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
-public class TestPersistenceUser{
+public class TestPersistenceUser extends BaseIntegrationTest {
 
     @Autowired
     private ServiceUser serviceUser;

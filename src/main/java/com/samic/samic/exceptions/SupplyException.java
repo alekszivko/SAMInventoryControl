@@ -1,6 +1,6 @@
 package com.samic.samic.exceptions;
 
-public class SupplyException extends RuntimeException{
+public class SupplyException extends SamicException{
       public SupplyException(String message){
             super(message);
       }

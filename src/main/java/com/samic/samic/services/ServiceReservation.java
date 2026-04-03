@@ -113,10 +113,10 @@ public class ServiceReservation{
                                     .isPresent()){
                 StorageObject storageObjectByReservationID = serviceStorageObject.findStorageObjectByReservationID(reservation.getId());
                 reservation.setReservedFrom(null);
-                StorageObject tempSto = serviceStorageObject.findStorageObjectByReservationID(reservation.getId());
-                tempSto.setReservation(null);
-                storageObjectByReservationID.setReservation(null);
-                serviceStorageObjectHistory.setStorageOBjectHistory(tempSto);
+                if(storageObjectByReservationID != null){
+                    storageObjectByReservationID.setReservation(null);
+                    serviceStorageObjectHistory.setStorageOBjectHistory(storageObjectByReservationID);
+                }
                 repositoryReservation.deleteById(reservation.getId());
 
             }

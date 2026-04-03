@@ -1,6 +1,6 @@
 package com.samic.samic.exceptions;
 
-public class ObjectTypeException extends RuntimeException  {
+public class ObjectTypeException extends SamicException  {
     public ObjectTypeException(String message){
         super(message);
     }

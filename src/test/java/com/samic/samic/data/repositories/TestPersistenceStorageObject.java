@@ -1,4 +1,5 @@
 package com.samic.samic.data.repositories;
+import com.samic.samic.BaseIntegrationTest;
 
 import com.samic.samic.data.entity.ObjectType;
 import com.samic.samic.data.entity.StorageObject;
@@ -8,7 +9,6 @@ import com.samic.samic.services.ServiceStorageObject;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,8 +17,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-@DataJpaTest
-public class TestPersistenceStorageObject{
+public class TestPersistenceStorageObject extends BaseIntegrationTest {
 
     @Autowired
     private ServiceStorageObject serviceStorageObject;
@@ -212,11 +211,21 @@ public class TestPersistenceStorageObject{
     void find_free_storageObjects(){
         //given
         int           freeStorageObjects = 0;
+        var savedOt1 = serviceObjectType.saveObjectTypeByObject(Fixtures.giveObjectType1());
+        var savedOt2 = serviceObjectType.saveObjectTypeByObject(Fixtures.giveObjectType2());
+        var savedOt3 = serviceObjectType.saveObjectTypeByObject(Fixtures.giveObjectType3());
         StorageObject storageObject1     = Fixtures.giveStorageObject1();
         StorageObject storageObject2     = Fixtures.giveStorageObject2();
         StorageObject storageObject3     = Fixtures.giveStorageObject3();
         StorageObject storageObject4     = Fixtures.giveStorageObject4();
         StorageObject storageObject5     = Fixtures.giveStorageObject5();
+        storageObject1.setObjectTypeName(savedOt1);
+        storageObject2.setObjectTypeName(savedOt1);
+        storageObject3.setObjectTypeName(savedOt2);
+        storageObject4.setObjectTypeName(savedOt2);
+        storageObject5.setObjectTypeName(savedOt3);
+
+        int baselineFree = serviceStorageObject.findNotReservedStorageObjects().size();
 
         //when
         var saved1 = serviceStorageObject.saveStorageObject(storageObject1);
@@ -242,7 +251,7 @@ public class TestPersistenceStorageObject{
 
 
         List<StorageObject> res        = serviceStorageObject.findNotReservedStorageObjects();
-        int                 freeAmount = res.size();
+        int                 freeAmount = res.size() - baselineFree;
 
         //then
         assertThat(freeAmount).isSameAs(freeStorageObjects);
@@ -252,11 +261,21 @@ public class TestPersistenceStorageObject{
     void find_reserved_storageObjects(){
         //given
         int           countReserved  = 0;
+        var savedOt1 = serviceObjectType.saveObjectTypeByObject(Fixtures.giveObjectType1());
+        var savedOt2 = serviceObjectType.saveObjectTypeByObject(Fixtures.giveObjectType2());
+        var savedOt3 = serviceObjectType.saveObjectTypeByObject(Fixtures.giveObjectType3());
         StorageObject storageObject1 = Fixtures.giveStorageObject1();
         StorageObject storageObject2 = Fixtures.giveStorageObject2();
         StorageObject storageObject3 = Fixtures.giveStorageObject3();
         StorageObject storageObject4 = Fixtures.giveStorageObject4();
         StorageObject storageObject5 = Fixtures.giveStorageObject5();
+        storageObject1.setObjectTypeName(savedOt1);
+        storageObject2.setObjectTypeName(savedOt1);
+        storageObject3.setObjectTypeName(savedOt2);
+        storageObject4.setObjectTypeName(savedOt2);
+        storageObject5.setObjectTypeName(savedOt3);
+
+        int baselineReserved = serviceStorageObject.findReservedStorageObjects().size();
 
         //when
         var saved1 = serviceStorageObject.saveStorageObject(storageObject1);
@@ -282,7 +301,7 @@ public class TestPersistenceStorageObject{
 
 
         List<StorageObject> res            = serviceStorageObject.findReservedStorageObjects();
-        int                 reservedAmount = res.size();
+        int                 reservedAmount = res.size() - baselineReserved;
 
         //then
         assertThat(reservedAmount).isSameAs(countReserved);

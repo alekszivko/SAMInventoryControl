@@ -33,17 +33,7 @@ public class ServiceStorage{
         if(storage != null){
             if(storage.getId() != null){
                 if(doesObjectExistById(storage.getId())){
-                    Storage objectById = findStorageByID(storage.getId());
-                    if(objectById != null){
-                        if(objectById.getId().equals(storage.getId())){
-                            objectById = storage;
-                            return repositoryStorage.save(objectById);
-                        }else{
-                            throw new StorageException("Storage with id1: '%s' and id2: '%s' does not match. Some error occoured while fetch!!".formatted(objectById.getId(), storage.getId()));
-                        }
-                    }else{
-                        throw new StorageException("Storage with id: '%s' does not exist in DB".formatted(storage.getId()));
-                    }
+                    throw new StorageException("Storage with id: '%s' already exists in DB".formatted(storage.getId()));
                 }else{
                     throw new StorageException("Storage with id: '%s' does not exist in DB but does have a id: ".formatted(storage.getId()));
                 }
@@ -134,6 +124,9 @@ public class ServiceStorage{
 
     @Transactional
     public Stream<Storage> findAll(){
+            if(repositoryStorage.findAll().isEmpty()){
+                throw new StorageException("Storage list is empty!");
+            }
             return repositoryStorage.findAll().stream();
     }
 }

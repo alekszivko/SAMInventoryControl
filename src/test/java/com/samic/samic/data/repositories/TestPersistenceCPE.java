@@ -1,4 +1,5 @@
 package com.samic.samic.data.repositories;
+import com.samic.samic.BaseIntegrationTest;
 
 
 import com.samic.samic.data.entity.CPE;
@@ -7,14 +8,12 @@ import com.samic.samic.exceptions.ValidationException;
 import com.samic.samic.services.ServiceCPE;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jsoup.helper.Validate.ensureNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DataJpaTest
-public class TestPersistenceCPE{
+public class TestPersistenceCPE extends BaseIntegrationTest {
 
     @Autowired
     private ServiceCPE serviceCP;

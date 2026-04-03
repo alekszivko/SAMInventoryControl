@@ -1,6 +1,6 @@
 package com.samic.samic.exceptions;
 
-public class StorageException extends RuntimeException{
+public class StorageException extends SamicException{
     public StorageException(String message){
         super(message);
     }

@@ -1,6 +1,6 @@
 package com.samic.samic.exceptions;
 
-public class SFPException extends RuntimeException{
+public class SFPException extends SamicException{
       public SFPException(String message){
             super(message);
       }

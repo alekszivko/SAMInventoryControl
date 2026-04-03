@@ -1,6 +1,6 @@
 package com.samic.samic.exceptions;
 
-public class ProducerException extends RuntimeException  {
+public class ProducerException extends SamicException  {
     public ProducerException(String message){
         super(message);
     }

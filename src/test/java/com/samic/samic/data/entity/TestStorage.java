@@ -1,4 +1,5 @@
 package com.samic.samic.data.entity;
+import com.samic.samic.BaseIntegrationTest;
 
 import com.samic.samic.data.constants.ConstantsDomain;
 import com.samic.samic.data.foundation.Guard;
@@ -7,16 +8,14 @@ import com.samic.samic.services.ServiceStorage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.testcontainers.utility.TestcontainersConfiguration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
-@DataJpaTest
 @Import(TestcontainersConfiguration.class)
-public class TestStorage{
+public class TestStorage extends BaseIntegrationTest {
 
     @Autowired
     RepositoryStorage repositoryStorage;

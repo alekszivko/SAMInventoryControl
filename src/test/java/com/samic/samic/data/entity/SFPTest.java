@@ -1,17 +1,16 @@
 package com.samic.samic.data.entity;
+import com.samic.samic.BaseIntegrationTest;
 
 import com.samic.samic.data.repositories.RepositorySFP;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.testcontainers.utility.TestcontainersConfiguration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
 @Import(TestcontainersConfiguration.class)
-public class SFPTest{
+public class SFPTest extends BaseIntegrationTest {
 
     @Autowired
     private RepositorySFP repositorySFP;

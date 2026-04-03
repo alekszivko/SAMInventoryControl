@@ -421,21 +421,21 @@ public class Fixtures{
 
     public static Reservation giveReservation3(){
         return Reservation.builder()
-                          .reservedAt(DateTimeFactory.plus_one_week())
+                          .reservedAt(DateTimeFactory.now_minus_one_week())
                           .reservedDescription("need special tools to install")
                           .build();
     }
 
     public static Reservation giveReservation4(){
         return Reservation.builder()
-                          .reservedAt(DateTimeFactory.plus_one_week())
+                          .reservedAt(DateTimeFactory.now_minus_one_week())
                           .reservedDescription("need special tools to install")
                           .build();
     }
 
     public static Reservation giveReservation5(){
         return Reservation.builder()
-                          .reservedAt(DateTimeFactory.plus_one_week())
+                          .reservedAt(DateTimeFactory.now_minus_one_week())
                           .reservedDescription("need special tools to install")
                           .build();
     }

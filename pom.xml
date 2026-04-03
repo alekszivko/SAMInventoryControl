@@ -19,6 +19,19 @@
       </plugin>
 
       <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <environmentVariables>
+            <DOCKER_HOST>unix:///tmp/docker-shim.sock</DOCKER_HOST>
+            <DOCKER_API_VERSION>1.44</DOCKER_API_VERSION>
+            <TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE>/tmp/docker-shim.sock</TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE>
+            <TESTCONTAINERS_RYUK_DISABLED>true</TESTCONTAINERS_RYUK_DISABLED>
+          </environmentVariables>
+        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+
+      <plugin>
         <artifactId>vaadin-maven-plugin</artifactId>
         <executions>
           <execution>
@@ -257,6 +270,7 @@
     <java.version>17</java.version>
     <spotless.version>2.40.0</spotless.version>
     <vaadin.version>24.3.0</vaadin.version>
+    <testcontainers.version>1.19.8</testcontainers.version>
     <!--<antrun.version>3.1.0</antrun.version>-->
   </properties>
 

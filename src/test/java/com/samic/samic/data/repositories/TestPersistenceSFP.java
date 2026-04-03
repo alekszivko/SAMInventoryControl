@@ -1,16 +1,15 @@
 package com.samic.samic.data.repositories;
+import com.samic.samic.BaseIntegrationTest;
 
 import com.samic.samic.data.entity.SFP;
 import com.samic.samic.data.fixture.Fixtures;
 import com.samic.samic.services.ServiceSFP;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
-public class TestPersistenceSFP{
+public class TestPersistenceSFP extends BaseIntegrationTest {
 
     @Autowired
     private ServiceSFP serviceSFP;

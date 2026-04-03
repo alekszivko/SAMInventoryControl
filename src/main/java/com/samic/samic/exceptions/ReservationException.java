@@ -1,6 +1,6 @@
 package com.samic.samic.exceptions;
 
-public class ReservationException extends RuntimeException{
+public class ReservationException extends SamicException{
       public ReservationException(String message){
             super(message);
       }

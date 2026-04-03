@@ -1,6 +1,6 @@
 package com.samic.samic.exceptions;
 
-public class StorageObjectHistoryException extends RuntimeException{
+public class StorageObjectHistoryException extends SamicException{
       public StorageObjectHistoryException(String message){
             super(message);
       }

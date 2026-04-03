@@ -1,23 +1,23 @@
 package com.samic.samic.data.entity;
 
+import com.samic.samic.BaseIntegrationTest;
 import com.samic.samic.data.repositories.RepositoryCPE;
 import com.samic.samic.exceptions.SamicException;
 import com.samic.samic.services.ServiceCPE;
-import lombok.RequiredArgsConstructor;
+import com.samic.samic.services.ServiceProducer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RequiredArgsConstructor
-@DataJpaTest
-class CPETest{
+class CPETest extends BaseIntegrationTest{
 
     @Autowired
-    private final RepositoryCPE repository;
+    private RepositoryCPE repository;
     @Autowired
-    private final ServiceCPE serviceCPE;
+    private ServiceCPE serviceCPE;
+    @Autowired
+    private ServiceProducer serviceProducer;
 
 
     //    private final Logger LOGGER = LoggerFactory.getLogger(CPETest.class);
@@ -26,12 +26,13 @@ class CPETest{
 
 
         //given
-        Producer prod = Producer.builder().shortname("Cisco").name("Cisco").build();
+        Producer savedProducer = serviceProducer.saveProducerByObject(
+                Producer.builder().shortname("Cisco").name("Cisco").build());
 
         CPE cpe = new CPE.CPEBuilder()
                           .macAddress("FF-FF-FF-FF-FF-FF")
                           .serialnumber("123456")
-                          .producer(prod)
+                          .producer(savedProducer)
                           .type(Type.IP_PHONE).build();
 
 

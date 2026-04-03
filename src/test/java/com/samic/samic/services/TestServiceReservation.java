@@ -1,5 +1,6 @@
 package com.samic.samic.services;
 
+import com.samic.samic.BaseIntegrationTest;
 import com.samic.samic.data.entity.Reservation;
 import com.samic.samic.data.entity.StorageObject;
 import com.samic.samic.data.entity.User;
@@ -11,20 +12,21 @@ import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DataJpaTest
 @Log4j2
-class TestServiceReservation{
+class TestServiceReservation extends BaseIntegrationTest{
+
+    private User savedTestUser;
 
     @BeforeEach
     void setUp(){
         serviceReservation.deleteAll();
-        serviceUser.deleteAll();
         serviceStorageObject.deleteAll();
+        serviceUser.deleteAll();
+        savedTestUser = serviceUser.saveUser(Fixtures.giveUser1());
     }
 
     @Autowired
@@ -33,6 +35,11 @@ class TestServiceReservation{
     private ServiceUser          serviceUser;
     @Autowired
     private ServiceStorageObject serviceStorageObject;
+
+    private Reservation withUser(Reservation reservation) {
+        reservation.setReservedFrom(savedTestUser);
+        return reservation;
+    }
 
     @Test
     void throw_exception_when_given_null_instead_reservation(){
@@ -48,7 +55,7 @@ class TestServiceReservation{
     void throw_exception_when_reservation_already_exists(){
 
         //given
-        Reservation reservation1 = Fixtures.giveReservation1();
+        Reservation reservation1 = withUser(Fixtures.giveReservation1());
         Reservation reservation2 = reservation1;
         //when
         serviceReservation.saveReservationByObject(reservation1);
@@ -61,7 +68,7 @@ class TestServiceReservation{
     @Test
     void save_reservation_is_valid_then_save(){
         //given
-        Reservation reservation = Fixtures.giveReservation1();
+        Reservation reservation = withUser(Fixtures.giveReservation1());
 
         //when
         var saved = serviceReservation.saveReservationByObject(reservation);
@@ -75,9 +82,9 @@ class TestServiceReservation{
     @Test
     void thorw_exeption_when_id_null(){
         //given
-        Reservation reservation1 = Fixtures.giveReservation1();
-        Reservation reservation2 = Fixtures.giveReservation2();
-        Reservation reservation3 = Fixtures.giveReservation3();
+        Reservation reservation1 = withUser(Fixtures.giveReservation1());
+        Reservation reservation2 = withUser(Fixtures.giveReservation2());
+        Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
         //when
         serviceReservation.saveReservationByObject(reservation1);
@@ -111,9 +118,9 @@ class TestServiceReservation{
     void find_reservation_by_id(){
 
         //given
-        Reservation reservation1 = Fixtures.giveReservation1();
-        Reservation reservation2 = Fixtures.giveReservation2();
-        Reservation reservation3 = Fixtures.giveReservation3();
+        Reservation reservation1 = withUser(Fixtures.giveReservation1());
+        Reservation reservation2 = withUser(Fixtures.giveReservation2());
+        Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
         //when
         var saved1 = serviceReservation.saveReservationByObject(reservation1);
@@ -130,7 +137,7 @@ class TestServiceReservation{
     @Test
     void find_id_optional_throw_exception_null(){
         //given
-        Reservation reservation3 = Fixtures.giveReservation3();
+        Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
         //when
         var exc = assertThrows(SamicException.class, () -> serviceReservation.findReservationByIDOptional(null));
@@ -143,7 +150,7 @@ class TestServiceReservation{
     @Test
     void find_id_optional(){
         //given
-        Reservation reservation1 = Fixtures.giveReservation3();
+        Reservation reservation1 = withUser(Fixtures.giveReservation3());
 
         //when
         var saved = serviceReservation.saveReservationByObject(reservation1);
@@ -154,9 +161,9 @@ class TestServiceReservation{
     @Test
     void delete_Reservation_By_Id(){
         //given
-        Reservation reservation1 = Fixtures.giveReservation1();
-        Reservation reservation2 = Fixtures.giveReservation2();
-        Reservation reservation3 = Fixtures.giveReservation3();
+        Reservation reservation1 = withUser(Fixtures.giveReservation1());
+        Reservation reservation2 = withUser(Fixtures.giveReservation2());
+        Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
         //when
         var saved1 = serviceReservation.saveReservationByObject(reservation1);
@@ -176,9 +183,9 @@ class TestServiceReservation{
     @Test
     void delete_by_object(){
         //given
-        Reservation reservation1 = Fixtures.giveReservation1();
-        Reservation reservation2 = Fixtures.giveReservation2();
-        Reservation reservation3 = Fixtures.giveReservation3();
+        Reservation reservation1 = withUser(Fixtures.giveReservation1());
+        Reservation reservation2 = withUser(Fixtures.giveReservation2());
+        Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
         //when
         var saved1 = serviceReservation.saveReservationByObject(reservation1);
@@ -222,9 +229,9 @@ class TestServiceReservation{
     @Test
     void ensure_does_object_exist(){
         //given
-        Reservation reservation1 = Fixtures.giveReservation1();
-        Reservation reservation2 = Fixtures.giveReservation2();
-        Reservation reservation3 = Fixtures.giveReservation3();
+        Reservation reservation1 = withUser(Fixtures.giveReservation1());
+        Reservation reservation2 = withUser(Fixtures.giveReservation2());
+        Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
         //when
         var saved1 = serviceReservation.saveReservationByObject(reservation1);
@@ -292,9 +299,9 @@ class TestServiceReservation{
     @Test
     void findAll(){
             //given
-            Reservation reservation1 = Fixtures.giveReservation1();
-            Reservation reservation2 = Fixtures.giveReservation2();
-            Reservation reservation3 = Fixtures.giveReservation3();
+            Reservation reservation1 = withUser(Fixtures.giveReservation1());
+            Reservation reservation2 = withUser(Fixtures.giveReservation2());
+            Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
             //when
             var saved1 = serviceReservation.saveReservationByObject(reservation1);
@@ -308,9 +315,9 @@ class TestServiceReservation{
     @Test
     void find_all_user_as_list(){
             //given
-            Reservation reservation1 = Fixtures.giveReservation1();
-            Reservation reservation2 = Fixtures.giveReservation2();
-            Reservation reservation3 = Fixtures.giveReservation3();
+            Reservation reservation1 = withUser(Fixtures.giveReservation1());
+            Reservation reservation2 = withUser(Fixtures.giveReservation2());
+            Reservation reservation3 = withUser(Fixtures.giveReservation3());
 
             //when
             var saved1 = serviceReservation.saveReservationByObject(reservation1);
