@@ -6,7 +6,24 @@ A [prototype web application](https://samic.azivkovic.dev/
 who needed a web application to list, track, reserve, add, and move their hardware stored at various
 locations, including customers.
 
+![SAMIC — Hardware tracking, simplified](marketing/hero.png)
+
+## Screenshots
+
+| Dashboard | My Hardware |
+|---|---|
+| ![Dashboard with live stock levels](marketing/dashboard.png) | ![Per-user hardware and reservations](marketing/my-hardware.png) |
+
+| Administration | Login |
+|---|---|
+| ![User and storage administration](marketing/administration.png) | ![Login](marketing/login.png) |
+
+The app is fully responsive and works on mobile devices:
+
+![Mobile screenshots](marketing/mobile.png)
+
 # Table of Contents
+- [Screenshots](#screenshots)
 - [Requirements](#requirements)
 - [Running the application](#running-the-application)
 - [Build production build](#build-production-build)
