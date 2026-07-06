@@ -49,3 +49,4 @@ build/
 !**/src/test/**/build/
 src/main/bundles/
 *.log
+"log_data_samic.log"
