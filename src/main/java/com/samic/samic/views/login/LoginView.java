@@ -2,12 +2,8 @@ package com.samic.samic.views.login;
 
 import com.samic.samic.security.AuthenticatedUser;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -29,6 +25,8 @@ public class LoginView extends Div implements BeforeEnterObserver {
   private static final String ANMELDE_BUTTON = "Anmelden";
   private static final String ERROR_MESSAGE = "Benutzername/Passwort ungültig";
   private static final String ERROR_TITLE = "Fehler beim Anmelden";
+  private static final String TAGLINE =
+      "Netzwerk-Hardware erfassen, reservieren und verfolgen — vom Hauptlager bis zum Kunden.";
   private final AuthenticatedUser authenticatedUser;
   private final LoginForm loginForm = new LoginForm();
 
@@ -39,42 +37,9 @@ public class LoginView extends Div implements BeforeEnterObserver {
 
   private void initUI() {
     addClassName("login-view");
-    add(buildShowcase(), buildFormPane());
-    setSizeFull();
-  }
 
-  private Div buildShowcase() {
-    Div showcase = new Div();
-    showcase.addClassName("login-showcase");
-
-    H1 headline = new H1("Netzwerk-Hardware im Griff");
-    Paragraph subline =
-        new Paragraph(
-            "Erfassen, reservieren und verfolgen Sie Ihre gesamte Hardware — "
-                + "vom Hauptlager bis zum Kunden.");
-
-    UnorderedList features =
-        new UnorderedList(
-            feature("Live-Bestandsübersicht mit Mindestbestands-Warnungen"),
-            feature("Reservierungen und Übergaben zwischen Technikern"),
-            feature("Rollenbasierte Verwaltung von Benutzern und Lagerorten"));
-
-    Image preview = new Image("images/preview-dashboard.png", "SAMIC Dashboard Vorschau");
-    preview.addClassName("login-preview");
-
-    showcase.add(headline, subline, features, preview);
-    return showcase;
-  }
-
-  private ListItem feature(String text) {
-    Span check = new Span("✓");
-    check.addClassName("login-feature-check");
-    return new ListItem(check, new Span(text));
-  }
-
-  private Div buildFormPane() {
-    Div formPane = new Div();
-    formPane.addClassName("login-form-pane");
+    Div card = new Div();
+    card.addClassName("login-card");
 
     Image logo = new Image("images/logo_samic.svg", "SAMIC — Inventory Control");
     logo.addClassName("login-logo");
@@ -93,8 +58,13 @@ public class LoginView extends Div implements BeforeEnterObserver {
     loginForm.setAction(
         RouteUtil.getRoutePath(VaadinService.getCurrent().getContext(), getClass()));
 
-    formPane.add(logo, loginForm);
-    return formPane;
+    card.add(logo, loginForm);
+
+    Paragraph tagline = new Paragraph(TAGLINE);
+    tagline.addClassName("login-tagline");
+
+    add(card, tagline);
+    setSizeFull();
   }
 
   @Override

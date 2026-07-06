@@ -1,0 +1,18 @@
+2026-07-06T20:42:23.280Z  INFO 12849 --- [main] com.samic.samic.Application              : Starting Application v1.0-SNAPSHOT using Java 21.0.10 with PID 12849 (/home/user/SAMInventoryControl/target/my-app-1.0-SNAPSHOT.jar started by root in /home/user/SAMInventoryControl)
+2026-07-06T20:42:23.285Z  INFO 12849 --- [main] com.samic.samic.Application              : The following 1 profile is active: "h2"
+2026-07-06T20:42:25.186Z  INFO 12849 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-06T20:42:25.187Z  INFO 12849 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-07-06T20:42:25.257Z  INFO 12849 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-07-06T20:42:25.583Z  INFO 12849 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-06T20:42:25.660Z  INFO 12849 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-07-06T20:42:25.663Z  INFO 12849 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-07-06T20:42:26.003Z  INFO 12849 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-06T20:42:26.344Z  INFO 12849 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:samic user=SA
+2026-07-06T20:42:26.357Z  INFO 12849 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-06T20:42:26.385Z  WARN 12849 --- [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-06T20:42:27.780Z  INFO 12849 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-06T20:42:29.086Z  WARN 12849 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-06T20:42:30.155Z  INFO 12849 --- [main] c.v.f.s.DefaultDeploymentConfiguration   : Vaadin is running in production mode.
+2026-07-06T20:42:30.211Z  INFO 12849 --- [main] com.samic.samic.Application              : Started Application in 7.494 seconds (process running for 7.998)
+2026-07-06T20:42:31.801Z  INFO 12849 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-06T20:42:31.873Z  INFO 12849 --- [http-nio-8081-exec-1] c.vaadin.flow.spring.SpringInstantiator  : The number of beans implementing 'I18NProvider' is 0. Cannot use Spring beans for I18N, falling back to the default behavior
