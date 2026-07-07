@@ -6,7 +6,7 @@ A [prototype web application](https://samic.azivkovic.dev/
 who needed a web application to list, track, reserve, add, and move their hardware stored at various
 locations, including customers.
 
-![SAMIC — Hardware tracking, simplified](marketing/hero.png)
+![SAMIC — Hardware tracking, simplified](marketing/hero-transparent.png)
 
 ## Screenshots
 
