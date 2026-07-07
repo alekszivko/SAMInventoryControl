@@ -8,22 +8,11 @@ locations, including customers.
 
 ![SAMIC — Hardware tracking, simplified](marketing/hero-transparent.png)
 
-## Screenshots
-
-| Dashboard | My Hardware |
-|---|---|
-| ![Dashboard with live stock levels](marketing/dashboard.png) | ![Per-user hardware and reservations](marketing/my-hardware.png) |
-
-| Administration | Login |
-|---|---|
-| ![User and storage administration](marketing/administration.png) | ![Login](marketing/login.png) |
-
 The app is fully responsive and works on mobile devices:
 
-![Mobile screenshots](marketing/mobile.png)
+![SAMIC on mobile](marketing/mobile-transparent.png)
 
 # Table of Contents
-- [Screenshots](#screenshots)
 - [Requirements](#requirements)
 - [Running the application](#running-the-application)
 - [Build production build](#build-production-build)
