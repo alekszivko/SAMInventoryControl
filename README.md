@@ -6,6 +6,12 @@ A [prototype web application](https://samic.azivkovic.dev/
 who needed a web application to list, track, reserve, add, and move their hardware stored at various
 locations, including customers.
 
+![SAMIC — Hardware tracking, simplified](marketing/hero-transparent.png)
+
+The app is fully responsive and works on mobile devices:
+
+![SAMIC on mobile](marketing/mobile-transparent.png)
+
 # Table of Contents
 - [Requirements](#requirements)
 - [Running the application](#running-the-application)
@@ -35,6 +41,17 @@ mvn exec:java -Dexec.mainClass="com.samic.samic.TestApplication" -Dexec.classpat
 ```
 which automatically pulls and starts a docker container containing an oracle database.
 
+### Running without Oracle (H2 demo mode)
+
+To try the application without Docker or an Oracle database, build the JAR and run it
+with the `h2` profile. It uses an in-memory H2 database seeded with the demo data
+from `data.sql`; nothing is persisted between restarts.
+
+```bash
+./mvnw clean package -Pproduction -DskipTests
+java -jar target/my-app-1.0-SNAPSHOT.jar --spring.profiles.active=h2
+```
+
 
 
 ## Build production build
@@ -57,7 +74,7 @@ This will build a JAR file with all the dependencies and front-end resources,
 ready to be deployed. The file can be found in the `target` folder after the build completes.
 
 Once the JAR file is built, you can run it using
-`java -jar target/samic-1.0-SNAPSHOT.jar`
+`java -jar target/my-app-1.0-SNAPSHOT.jar`
 
 ### Docker Container with production build
 
